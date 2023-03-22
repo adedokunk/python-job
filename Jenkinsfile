@@ -16,11 +16,9 @@ pipeline {
         echo "test"
       }
     }  
-    stage ('clean') {
+    stage ('Create zip') {
             steps {
-                sh 'mkdir result-1'
-                sh 'cd result-1'
-                sh 'git archive main --format=zip --output=report.zip'
+                sh 'zip middlewareScript-${BUILD_NUMBER}.zip * --exclude Jenkinsfile README.md'
                 
             }
         }
